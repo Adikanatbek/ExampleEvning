@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'ckeditor',
     'ckeditor_uploader',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -137,6 +138,14 @@ MEDIA_URL = '/media/'
 INTERNAL_IPS = ['127.0.0.1']
 
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587 
+EMAIL_HOST_USER = 'adikanatbekov5@gmail.com'
+EMAIL_HOST_PASSWORD = 'kanatbekovadilet'
+EMAIL_USE_TLS = True
+
+
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
@@ -203,3 +212,9 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'django_cashe'),
+    }
+}
